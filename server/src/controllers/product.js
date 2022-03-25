@@ -22,7 +22,7 @@ export const insertedProduct = async (req, res) => {
   try {
     const insertProduct = new Product(product);
     await insertProduct.save();
-
+    if (!insertProduct) res.send({ message: insertProduct.error.message });
     res.send({ insertProduct, message: "Product was inserted!" });
   } catch (error) {
     res.send({ message: error.message });

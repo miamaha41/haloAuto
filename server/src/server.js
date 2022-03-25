@@ -1,7 +1,7 @@
 import express from "express";
 import "dotenv/config";
-import verifyToken from "./middlewares/verifyToken.js";
-import api from "./routes/v1/api.js";
+import productRouter from "./routes/v1/productRouter.js";
+import orderRouter from "./routes/v1/orderRouter.js";
 import { connectDB } from "./config/mongoDb.js";
 
 // connectDB()
@@ -17,7 +17,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const hostname = "localhost";
 app.use(express.json());
-app.use("/api", api);
+app.use("/product", productRouter);
+app.use("/order", orderRouter);
 app.listen(PORT, hostname, () => {
   console.log(`running at ${hostname}:${PORT}/`);
 });

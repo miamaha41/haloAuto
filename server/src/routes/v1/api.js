@@ -3,48 +3,6 @@ import User from "../../models/User.js";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 import verifyToken from "../../middlewares/verifyToken.js";
-import {
-  createProducts,
-  deletedProduct,
-  getProducts,
-  insertedProduct,
-  updatedProduct,
-} from "../../controllers/product.js";
-const router = Router();
-
-/**
- * @router POST api/getProducts
- * @description Get All Product document
- * @access Public
- */
-router.get("/products", getProducts);
-/**
- * @router POST api/createProducts
- * @description Create new Product collection
- * @access Public
- */
-router.post("/createProducts", createProducts);
-
-/**
- * @router POST api/product
- * @description Insert a new Product document
- * @access Public
- */
-router.post("/product", insertedProduct);
-
-/**
- * @router PUT api/product
- * @description Update a Product document
- * @access Public
- */
-router.put("/product/:id", updatedProduct);
-
-/**
- * @router DELETE api/product
- * @description Delete a Product document
- * @access Public
- */
-router.delete("/product/:id", deletedProduct);
 
 /**
  * @router GET api/auth/
