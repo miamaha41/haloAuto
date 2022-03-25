@@ -15,7 +15,7 @@ export const createProducts = async (req, res) => {
 };
 
 export const insertedProduct = async (req, res) => {
-  const product = req.body.product;
+  const product = req.body;
   if (!product) {
     res.send({ message: "Must have product!" });
   }

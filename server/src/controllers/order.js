@@ -1,7 +1,7 @@
 import { Order } from "../models/Order.js";
 
 export const insertedOrder = async (req, res) => {
-  const order = req.body.order;
+  const order = req.body;
   if (!order) res.send({ message: "Must have order" });
   try {
     const insertOrder = new Order(order);
