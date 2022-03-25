@@ -19,6 +19,6 @@ const hostname = "localhost";
 app.use(express.json());
 app.use("/product", productRouter);
 app.use("/order", orderRouter);
-app.listen(PORT, hostname, () => {
-  console.log(`running at ${hostname}:${PORT}/`);
+app.listen(PORT, () => {
+  console.log(`running at :${PORT}/`);
 });
