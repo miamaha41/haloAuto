@@ -59,7 +59,7 @@ export const deletedProduct = async (req, res) => {
 };
 
 export const updatedProduct = async (req, res) => {
-  let product = req.body.product;
+  let product = req.body;
   const productId = req.params.id;
   if (!product || !productId) {
     res.send({ message: "Must have product , product ID!" });
