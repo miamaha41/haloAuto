@@ -1,5 +1,19 @@
 import mongoose from "mongoose";
 
+const product = mongoose.Schema({
+  nameProduct: {
+    // type: mongoose.Schema.Types.ObjectId,
+    // ref: "Product",
+    type: "String",
+    required: true,
+  },
+  quantity: {
+    type: "Number",
+    required: true,
+    min: 1,
+  },
+  // },
+});
 const orderSchema = new mongoose.Schema(
   {
     email: {
@@ -18,11 +32,7 @@ const orderSchema = new mongoose.Schema(
       type: "String",
       required: true,
     },
-    listProducts: {
-      type: "Array",
-      required: true,
-    },
-
+    listProducts: [product],
     payment: {
       type: "String",
       default: "COD",

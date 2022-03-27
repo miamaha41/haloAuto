@@ -1,11 +1,19 @@
 import { Order } from "../models/Order.js";
 
 export const insertedOrder = async (req, res) => {
+  // const {
+  //   listProduct: [quantity, nameProduct],
+  //   ...order
+  // } = req.body;
+  // const _id = listProduct.nameProduct;
   const order = req.body;
-  if (!order) res.send({ message: "Must have order" });
+  if (!req.body) res.send({ message: "Must have order" });
+
   try {
     const insertOrder = new Order(order);
     await insertOrder.save();
+    // insertOrder.markModified("listProduct");
+    // insertOrder.create();
     if (!insertOrder) res.send({ message: insertOrder.error.message });
     res.send({ insertOrder, message: "Order inserted successfully" });
   } catch (error) {
