@@ -1,21 +1,28 @@
 import { Order } from "../models/Order.js";
+import Product from "../models/Product.js";
 
 export const insertedOrder = async (req, res) => {
   // const {
-  //   listProduct: [quantity, nameProduct],
-  //   ...order
+  //   listProducts: [quantity, productId],
   // } = req.body;
   // const _id = listProduct.nameProduct;
   const order = req.body;
   if (!req.body) res.send({ message: "Must have order" });
-
   try {
     const insertOrder = new Order(order);
+    // const productArray = await Product.find({ productId: productId }).populate(
+    //   "productId",
+    //   ["currentPrice"]
+    // );
+    // console.log(productArray);
     await insertOrder.save();
     // insertOrder.markModified("listProduct");
     // insertOrder.create();
     if (!insertOrder) res.send({ message: insertOrder.error.message });
-    res.send({ insertOrder, message: "Order inserted successfully" });
+    res.send({
+      insertOrder,
+      message: "Order inserted successfully",
+    });
   } catch (error) {
     res.send({ message: error.message });
   }

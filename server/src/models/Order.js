@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 
 const product = mongoose.Schema({
-  nameProduct: {
+  productId: {
     // type: mongoose.Schema.Types.ObjectId,
     // ref: "Product",
     type: "String",
     required: true,
+    unique: true,
   },
   quantity: {
     type: "Number",
     required: true,
     min: 1,
   },
-  // },
 });
 const orderSchema = new mongoose.Schema(
   {
@@ -44,4 +44,5 @@ const orderSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-export const Order = mongoose.model("Order", orderSchema);
+
+export const Order = mongoose.model("listorder", orderSchema);
